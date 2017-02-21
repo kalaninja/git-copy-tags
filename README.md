@@ -12,3 +12,9 @@ This is a Go languge port of the original ruby script, can be found [here](https
 By default, the script is in "dry run" mode, which means that it only prints out what it **would** do, without actually doing it. If you are happy with the result, add `-f`.
 
 After running the command with `-f`, make sure to run `git push --tags` in the destination repository!
+
+## Downloads
+:warning: This was cross-compiled and is not guaranteed to work
+- [Windows](https://github.com/kalaninja/git-copy-tags/releases/download/release/git-copy-tags.exe)
+- [MacOSX](https://github.com/kalaninja/git-copy-tags/releases/download/release/darwin.zip)
+- [Linux](https://github.com/kalaninja/git-copy-tags/releases/download/release/linux.zip)
