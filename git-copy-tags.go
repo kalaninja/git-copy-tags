@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
-	"log"
 	"runtime"
 	"strings"
 )
@@ -66,23 +66,23 @@ func main() {
 	}
 
 	os.Chdir(src)
-	src_tags := getTags()
+	srcTags := getTags()
 
 	os.Chdir(dest)
-	dest_tags := getTags()
+	destTags := getTags()
 
 	if !force {
 		fmt.Println("Running dry, use -f to actually apply changes...")
 	}
 
-	for tag, commit := range src_tags {
-		if _, ok := dest_tags[tag]; !ok {
+	for tag, commit := range srcTags {
+		if _, ok := destTags[tag]; !ok {
 			cmd := fmt.Sprintf("git rev-list --max-count=1 %s", commit)
 			if _, err := shell(cmd); err == nil {
 				if force {
 					if _, err := shell(fmt.Sprintf("git tag %s %s\n", tag, commit)); err == nil {
 						fmt.Printf("Tagged %s with %s", commit, tag)
-					}else {
+					} else {
 						fmt.Printf("Error while tagging %s with %s\n", commit, tag)
 					}
 
